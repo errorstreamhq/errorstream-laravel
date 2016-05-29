@@ -4,8 +4,8 @@ namespace ErrorStream\ErrorStream;
 
 use Log;
 use Illuminate\Support\ServiceProvider;
-use ErrorStream\ErrorStreamClient;
-use ErrorStream\ErrorStreamMonologHandler;
+use ErrorStream\ErrorStreamClient\ErrorStreamClient;
+use ErrorStream\ErrorStreamMonologHandler\ErrorStreamMonologHandler;
 
 class ErrorStreamServiceProvider extends ServiceProvider
 {
