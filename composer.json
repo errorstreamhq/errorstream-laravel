@@ -5,8 +5,8 @@
     "homepage": "http://errorstream.com",
     "type": "library",
     "require": {
-        "errorstream/errorstreamclient": "1.0",
-        "errorstream/errorstream-monolog": "1.0",
+        "errorstream/errorstreamclient": "1.*",
+        "errorstream/errorstream-monolog": "1.*",
         "illuminate/support": "4.*|5.*"
     },
     "license": "Apache-2.0",
