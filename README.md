@@ -32,3 +32,25 @@ Finally, add the following two configuration entries into .env. You can find you
 ERROR_STREAM_API_TOKEN=YOUR_API_TOKEN
 ERROR_STREAM_PROJECT_TOKEN=YOUR_PROJECT_TOKEN
 ```
+
+
+#Tagging
+Anywhere within your application you can append tags on to the reports that you generate and send to errorstream.com. Tags are great for grouping code together. You can make a call to add a tag anywhere by calling addTag(). A great place to do this would be to extend your Handler class modifications. For example:
+```php
+public function report(Exception $e)
+{
+     if ($this->shouldReport($e)) {
+          app('errorstream')->addTag('v1.0.2');
+          app('errorstream')->reportException($e);
+     }
+     parent::report($e);
+}
+```
+
+
+#Adding Context
+Sometimes you'll need additional information in order to diagnose issues. Context is great for adding more information to errors. Maybe you want to send a build number, user id, or anything else. You can use this in anywhere in your laravel application
+
+```php
+app('errorstream')->addContext('some more details about variables that are set');
+```
