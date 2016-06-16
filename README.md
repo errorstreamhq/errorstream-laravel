@@ -1,5 +1,5 @@
 # errorstream-laravel
-Laravel integration with [Errorstream](https://errorstream.com/).
+Laravel integration with [Errorstream](https://www.errorstream.com/).
 
 #Installation Instructions
 
