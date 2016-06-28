@@ -27,12 +27,19 @@ public function report(Exception $e)
 }
 ```
 
-Finally, add the following two configuration entries into .env. You can find your API key and project token on the project settings page for the project you wish to integrate.
+Add the following two configuration entries into .env. You can find your API key and project token on the project settings page for the project you wish to integrate.
 ```bash
 ERROR_STREAM_API_TOKEN=YOUR_API_TOKEN
 ERROR_STREAM_PROJECT_TOKEN=YOUR_PROJECT_TOKEN
 ```
 
+Finally, Add the errorstream config entries in your config/services.php
+```php
+'errorstream' => [
+    'api_token'    => env('ERROR_STREAM_API_TOKEN'),
+    'project_token' => env('ERROR_STREAM_PROJECT_TOKEN'),
+],
+```
 
 #Tagging
 Anywhere within your application you can append tags on to the reports that you generate and send to errorstream.com. Tags are great for grouping code together. You can make a call to add a tag anywhere by calling addTag(). A great place to do this would be to extend your Handler class modifications. For example:
