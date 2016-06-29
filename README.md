@@ -5,7 +5,7 @@ Laravel integration with [Errorstream](https://www.errorstream.com/).
 
 First, run the following command on the terminal to download and install the package 
 ```text
-composer require errorstream/errorstream-laravel 1.*
+composer require errorstream/errorstream-laravel 2.*
 ```
 
 Next, register the service provider in the config/app.php file.
@@ -36,7 +36,7 @@ ERROR_STREAM_PROJECT_TOKEN=YOUR_PROJECT_TOKEN
 Finally, Add the errorstream config entries in your config/services.php
 ```php
 'errorstream' => [
-    'api_token'    => env('ERROR_STREAM_API_TOKEN'),
+    'api_token'     => env('ERROR_STREAM_API_TOKEN'),
     'project_token' => env('ERROR_STREAM_PROJECT_TOKEN'),
 ],
 ```
