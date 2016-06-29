@@ -36,15 +36,15 @@ class ErrorStreamServiceProvider extends ServiceProvider
     {
         $this->app->singleton('errorstream', function ($app) {
             $client = new ErrorStreamClient();
-            $client->api_token = env('ERROR_STREAM_API_TOKEN');
-            $client->project_token = env('ERROR_STREAM_PROJECT_TOKEN');
+            $client->api_token = config('services.errorstream.api_token');
+            $client->project_token = config('services.errorstream.project_token');
             return $client;
         });
 
         $this->app->singleton('errorstreammonolog', function ($app) {
             $client = new ErrorStreamMonologHandler();
-            $client->api_token = env('ERROR_STREAM_API_TOKEN');
-            $client->project_token = env('ERROR_STREAM_PROJECT_TOKEN');
+            $client->api_token = config('services.errorstream.api_token');
+            $client->project_token = config('services.errorstream.project_token');
             return $client;
         });
     }
