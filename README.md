@@ -15,7 +15,7 @@ Next, register the service provider in the config/app.php file.
      ErrorStream\ErrorStream\ErrorStreamServiceProvider::class,
 ]
 ```
-Then ass the Facade to the aliases array in the config/app.php file.
+Then add the Facade to the aliases array in the config/app.php file.
 ```php
 'aliases' => [
     // ...
