@@ -5,7 +5,7 @@ Laravel integration with [Errorstream](https://www.errorstream.com/).
 
 First, run the following command on the terminal to download and install the package 
 ```text
-composer require errorstream/errorstream-laravel 2.*
+composer require errorstream/errorstream-laravel 3.*
 ```
 
 Next, register the service provider in the config/app.php file.
