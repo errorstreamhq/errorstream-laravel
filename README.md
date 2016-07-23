@@ -15,13 +15,20 @@ Next, register the service provider in the config/app.php file.
      ErrorStream\ErrorStream\ErrorStreamServiceProvider::class,
 ]
 ```
+Then add the Facade to the aliases array in the config/app.php file.
+```php
+'aliases' => [
+    // ...
+    'ErrorStream' => ErrorStream\ErrorStream\Facades\ErrorStream::class,
+]
+```
 
 Then hook into the App/Exceptions/Handler.php file to send errors to our service.
 ```php
 public function report(Exception $e)
 {
      if ($this->shouldReport($e)) {
-           app('errorstream')->reportException($e);
+           ErrorStream::reportException($e);
      }
      parent::report($e);
 }
@@ -47,8 +54,8 @@ Anywhere within your application you can append tags on to the reports that you 
 public function report(Exception $e)
 {
      if ($this->shouldReport($e)) {
-          app('errorstream')->addTag('v1.0.2');
-          app('errorstream')->reportException($e);
+          ErrorStream::addTag('v1.0.2');
+          ErrorStream::reportException($e);
      }
      parent::report($e);
 }
@@ -59,5 +66,5 @@ public function report(Exception $e)
 Sometimes you'll need additional information in order to diagnose issues. Context is great for adding more information to errors. Maybe you want to send a build number, user id, or anything else. You can use this in anywhere in your laravel application
 
 ```php
-app('errorstream')->addContext('some more details about variables that are set');
+ErrorStream::addContext('some more details about variables that are set');
 ```
