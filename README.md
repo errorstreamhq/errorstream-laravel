@@ -27,9 +27,9 @@ Then hook into the App/Exceptions/Handler.php file to send errors to our service
 ```php
 public function report(Exception $e)
 {
-     if ($this->shouldReport($e)) {
-           ErrorStream::reportException($e);
-     }
+    if ($this->shouldReport($exception) && config('services.errorstream.enabled')) {
+        ErrorStream::reportException($exception);
+    }
      parent::report($e);
 }
 ```
@@ -38,6 +38,7 @@ Add the following two configuration entries into .env. You can find your API key
 ```bash
 ERROR_STREAM_API_TOKEN=YOUR_API_TOKEN
 ERROR_STREAM_PROJECT_TOKEN=YOUR_PROJECT_TOKEN
+ERROR_STREAM_ENABLED=1
 ```
 
 Finally, Add the errorstream config entries in your config/services.php
@@ -45,6 +46,7 @@ Finally, Add the errorstream config entries in your config/services.php
 'errorstream' => [
     'api_token'     => env('ERROR_STREAM_API_TOKEN'),
     'project_token' => env('ERROR_STREAM_PROJECT_TOKEN'),
+    'enabled'       => env('ERROR_STREAM_ENABLED'),
 ],
 ```
 
