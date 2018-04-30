@@ -23,8 +23,10 @@ class ErrorStreamServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $monolog = Log::getMonolog();
-        $monolog->pushHandler(app('errorstreammonolog'));
+        if(config('services.errorstream.enabled')){
+            $monolog = Log::getMonolog();
+            $monolog->pushHandler(app('errorstreammonolog'));
+        }
     }
 
     /**
